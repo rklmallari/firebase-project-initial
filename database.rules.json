@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "authors": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "books": {
+      ".read": "auth != null",
+      ".write": true,
+      ".indexOn": ["title", "authorId"]
+    },
+    "bookAuthorMap": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}

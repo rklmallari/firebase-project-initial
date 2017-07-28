@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>eBookShare - Web App</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="/css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><i class="fa fa-bookmark"></i>&nbsp;eBookShare</a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapsible">
+      <ul class="nav navbar-nav navbar-left">
+        <li><button id="sign-in" title="Login with Google"><u>Login with Google</u></button></li>
+        <li><div hidden id="user-name" onclick=window.location.href="#section3" title="Go to My Profile"></div></li>
+        <li><div hidden id="my-collection" onclick=window.location.href="#section2" title="Go to My Collection"></div></li>
+        <li><button id="sign-out" hidden title="Logout"><u>Logout</u></button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="container-fluid" id="section1">
+    <h2 class="text-center v-center">A Free eBook Sharing App is Here!</h2>
+  
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-4 text-center">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1 text-center"><h3>Search.</h3><p>A collection of hundreds of original ebooks written by our users can be found here!</p><i class="fa fa-search fa-5x"></i></div>
+            </div><br>
+            <form class="navbar-form">
+              <div class="form-group" style="display:inline;">
+                <div class="input-group"> 
+                  <div class="input-group-btn">
+                  </div>
+                  <input type="text" class="form-control" placeholder="Search Title..." id="searchText">
+                  <span class="input-group-addon" id="searchButton" style="background-color:grey;"><i class="fa fa-search" title="Search Title"></i>
+                </div></span>
+                  <br><br>
+                  <ul id="searchList" style="list-style: none; text-align: left"></ul>
+                </div>
+            </form>
+          </div>
+          <div class="col-sm-4 text-center">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1 text-center"><h3>Read.</h3><p>You will love originally-written books or stories by our users.</p><i class="fa fa-eye fa-5x"></i></div>
+            </div>
+          </div>
+          <div class="col-sm-4 text-center">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1 text-center"><h3>Upload.</h3><p>Readers across the globe are here to see how a great writer you are.</p><i class="fa fa-cloud-upload fa-5x"></i></div>
+            </div><br>
+            <form class="navbar-form" id="bookForm">
+              <div class="form-group" style="display:inline;">
+                <div class="input-group"> 
+                  <div class="input-group-btn">
+                  </div>
+                  <input type="text" class="form-control" id="bookTitle" placeholder="Title goes here..."><br><br>
+                  <textarea class="form-control" id="description" placeholder="Brief description..." cols="50" rows="3"></textarea><br><br><br><br>
+                  <select id="optGenre" class="form-control">
+                    <option selected value="">---Select Genre---</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Kids">Kids</option>
+                    <option value="Other">Other</option>
+                  </select></form><br><br>
+                  <form class="navbar-form" id="uploadForm"><p>Accepted File Formats: .pdf, .doc/.docx and .txt only</p><input type="file" class="form-control" id="uploadBox"></form><br><br>
+                  <progress value="0" max="100" id="uploader">0%</progress>
+                  <p>Note: Once file has been chosen, it will be automatically uploaded and all details will be saved.</p>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div><!--/container-->
+</section>
+
+<section class="container-fluid" id="section2" hidden>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <h1>My Collection</h1>
+        <br>
+    <p class="lead">Here is the list of ebooks you have uploaded.</p>
+        <br> 
+        <i style="font-size:120px" class="fa fa-book fa-5x"></i>
+
+        <br><br><br>
+
+        <ul id="bookList" style="list-style: none; text-align: left"></ul>
+  </div>
+</section>
+
+<section class="container-fluid" id="section3" hidden>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <h1>My Profile</h1>
+        <br>
+        <p class="lead">We are considering you not just one of our readers, but also one of our authors from now on! Feel free to update your profile below.</p>
+      <br> 
+      <img id="user-pic" class="text-center" style="width:100px; height:auto" />
+      <form class="navbar-form">
+        <div class="form-group" style="display:inline;">
+          <div class="input-group"> 
+            <div class="input-group-btn">
+            </div>
+            <i></i><br><br>
+              User Name<br><input type="text" class="form-control" id="userNameField" disabled><br><br><br>
+              Screen Name<br><input type="text" class="form-control" id="screenNameField" placeholder="Screen name here..."><br><br><br>
+              Self-introduction<br><textarea class="form-control" id="selfIntro" rows="3" cols="50" placeholder="Your bio..."></textarea><br><br><br><br>
+              <input type="button" class="form-control" value="Update Profile" id="updProfButton" style="background-color:grey; color:black">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="container">
+    <div class="row">    
+      <div class="col-xs-6 col-sm-6 col-md-3 column">          
+          <h4>Information</h4>
+          <ul class="nav">
+            <li>Developer: Ray Kevin Mallari</li>
+            <li>Roll-in Date: July 17, 2017</li>
+            <li>(c) 2017</li>
+          </ul> 
+      </div>
+      <div class="col-xs-6 col-md-3 column">          
+          <h4>Follow Me</h4>
+          <ul class="nav">
+            <li><a href="https://twitter.com/rklmallari" target="_blank">Twitter</a></li>
+          </ul> 
+      </div>
+      <div class="col-xs-6 col-md-3 column">          
+          <h4>Contact Developer</h4>
+          <ul class="nav">
+            <li><a href="mailto:raykevin@google.com">Email: raykevin@google.com</a></li>
+            <li>HQ: McKinley Hill, Taguig City</li>
+          </ul> 
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script defer src="/__/firebase/4.1.3/firebase-app.js"></script>
+    <script defer src="/__/firebase/4.1.3/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.1.3/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.1.3/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.1.3/firebase-storage.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+
+  </body>
+
+</html>
